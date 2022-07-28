@@ -1,32 +1,42 @@
+import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import generateDate from "../../components/dataGenerator";
 
-const info = generateDate();
-console.log(
-  info.map((x) => x.date),
-  "data from Apex charts"
-);
-export default function SampleLine() {
+export default function SampleLine(props) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const newData = generateDate();
+    setData(newData);
+  }, []);
+
+  const changeHandler = () => {
+    const newData = generateDate();
+    setData(newData);
+  };
   const series = [
     {
-      type: "line", //render a line chart for this data
+      type: "area", //render a line chart for this data
       name: "spent",
-      data: info.map((x) => x.spent),
+      data: data.map((x) => x.spent),
     },
     {
       type: "area", //use area chart here.
       name: "items",
-      data: info.map((x) => x.items),
+      data: data.map((x) => x.items),
     },
     {
       type: "line",
       name: "index",
-      data: info.map((x) => x.index),
+      data: data.map((x) => x.index),
     },
   ];
   const options = {
     xaxis: {
-      categories: info.map((x) => x.date),
+      categories: data.map((x) => x.date),
+    },
+    yaxis: {
+      // reversed: true,
     },
   };
   return (
@@ -38,6 +48,7 @@ export default function SampleLine() {
         width="1500"
         height="400"
       />
+      <button onClick={changeHandler}>ChangeApexChart</button>
     </div>
   );
 }

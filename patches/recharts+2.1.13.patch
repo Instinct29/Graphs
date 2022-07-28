@@ -1,0 +1,13 @@
+diff --git a/node_modules/recharts/src/util/ChartUtils.ts b/node_modules/recharts/src/util/ChartUtils.ts
+index 459cae7..ffbf801 100644
+--- a/node_modules/recharts/src/util/ChartUtils.ts
++++ b/node_modules/recharts/src/util/ChartUtils.ts
+@@ -159,6 +159,8 @@ export const getMainColorOfGraphicItem = (item: ReactElement) => {
+       break;
+   }
+ 
++  alert("green");
++
+   return result;
+ };
+ 

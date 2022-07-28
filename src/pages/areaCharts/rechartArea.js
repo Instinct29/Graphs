@@ -12,60 +12,6 @@ import {
   Brush,
 } from "recharts";
 
-const data = [
-  {
-    name: "Manthan",
-    loss: 4000,
-    profit: 2400,
-    amt: 2400,
-    linedata: 1000,
-  },
-  {
-    name: "MahakDD",
-    loss: 3000,
-    profit: 1398,
-    amt: 2210,
-    linedata: 1234,
-  },
-  {
-    name: "NeerajSir",
-    loss: 2000,
-    profit: 9800,
-    amt: 2290,
-    linedata: 1223,
-  },
-  {
-    name: "ChiragSir",
-    loss: 2780,
-    profit: 3908,
-    amt: 2000,
-    linedata: 1123,
-  },
-  {
-    name: "DeepeshSir",
-    loss: 1890,
-    profit: 4800,
-    amt: 2181,
-    linedata: 1567,
-  },
-  {
-    name: "PulkitBhai",
-    loss: 2390,
-    profit: 3800,
-    amt: 2500,
-    linedata: 1442,
-  },
-  {
-    name: "JasweerPaaji",
-    loss: 3490,
-    profit: 4300,
-    amt: 2100,
-    linedata: 1988,
-  },
-];
-
-const newData = generateDate();
-
 const toPercent = (decimal, fixed = 0) => `${(decimal * 100).toFixed(fixed)}%`;
 
 const getPercent = (value, total) => {
@@ -92,21 +38,17 @@ const renderTooltipContent = (o) => {
   );
 };
 
-const Rechartss = () => {
-  const [info, setInfo] = useState(generateDate);
+const Rechartss = (props) => {
+  const [data, setData] = useState([]);
 
-  const b = useEffect(() => {}, []);
+  useEffect(() => {
+    const newData = generateDate();
+    setData(newData);
+  }, []);
 
-  const mapChangeFunction = () => {
-    const a = {
-      date: "December 4, 2020",
-      index: 599,
-      items: 450,
-      spent: 810,
-    };
-    setInfo((prevValue) => {
-      return [...prevValue, a];
-    });
+  const clickHandler = () => {
+    const newData = generateDate();
+    setData(newData);
   };
 
   return (
@@ -114,7 +56,7 @@ const Rechartss = () => {
       <ComposedChart
         width={1500}
         height={400}
-        data={newData}
+        data={data}
         stackOffset="expand"
         margin={{
           top: 5,
@@ -125,43 +67,21 @@ const Rechartss = () => {
       >
         <CartesianGrid strokeDasharray="8 8" />
         <XAxis dataKey="date" />
-        <YAxis tickFormatter={toPercent} />
+        <YAxis />
         <Tooltip content={renderTooltipContent} />
         <Legend />
+        <Area tye="monotone" dataKey="spent" stroke="blue" fill="blue" />
         <Area
           type="monotone"
-          stackId="1"
           dataKey="items"
-          stroke="black"
+          stroke="green"
           fill="green"
           activeDot={{ r: 8 }}
         />
-        <Area
-          tye="monotone"
-          stackId="1"
-          dataKey="index"
-          stroke="black"
-          fill="white"
-        />
-        <Area
-          tye="monotone"
-          stackId="1"
-          dataKey="spent"
-          stroke="black"
-          fill="orange"
-        />
+        <Line type="line" dataKey="index" stroke="orange" />
         <Brush dataKey="date" height={30} stroke="#8884d8" />
-
-        {/* <Line
-        type="monotone"
-        dataKey="spent"
-        stroke="black"
-        activeDot={{ r: 8 }}
-      /> */}
-        {/* <Line type="monotone" dataKey="spent" stroke="black" /> */}
       </ComposedChart>
-      {console.log(info, "Form function")}
-      <button>Change Chart</button>
+      <button onClick={clickHandler}>Change Chart</button>
     </>
   );
 };
