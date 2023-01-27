@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SampleLine from "../pages/areaCharts/apexAreaCharts";
-import Rechartss from "../pages/areaCharts/rechartArea";
-import generateDate from "./dataGenerator";
+import SampleLine from "../pages/areaCharts/ApexAreaCharts";
+import Rechartss from "../pages/areaCharts/RechartArea";
+import generateDate from "./DataGenerator";
 
 const ChangeButton = () => {
   const [dataa, setData] = useState([]);

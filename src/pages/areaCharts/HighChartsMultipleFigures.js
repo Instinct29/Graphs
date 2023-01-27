@@ -1,7 +1,7 @@
 import React from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import generateDate from "../../components/dataGenerator";
+import generateDate from "../../components/DataGenerator";
 
 const HighChartsMultipleFigures = () => {
   const info = generateDate();
