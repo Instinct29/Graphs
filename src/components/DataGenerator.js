@@ -1,7 +1,7 @@
 // const moment = require("moment");
 import moment from "moment";
 
-const generateDate = (length = 100000) => {
+const generateDate = (length = 10000) => {
   let arr = [];
   for (let i = 0; i < length; i++) {
     let rand1 = Math.random() * 15 + 5;

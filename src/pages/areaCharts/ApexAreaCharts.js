@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
-import generateDate from "../../components/dataGenerator";
+import generateDate from "../../components/DataGenerator";
 
 export default function SampleLine(props) {
   const [data, setData] = useState([]);

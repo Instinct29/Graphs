@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import generateDate from "../../components/dataGenerator";
+import generateDate from "../../components/DataGenerator";
 import {
   ComposedChart,
   Line,

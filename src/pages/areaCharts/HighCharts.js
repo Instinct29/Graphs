@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-import generateDate from "../../components/dataGenerator";
+import generateDate from "../../components/DataGenerator";
 
 const HighCharts = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const newData = generateDate();
-    setData(newData);
+    const generatedData = generateDate();
+    setData(generatedData);
   }, []);
 
   const clickHandler = () => {
